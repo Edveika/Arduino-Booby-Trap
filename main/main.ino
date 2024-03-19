@@ -11,12 +11,10 @@ void calcDistance();
 
 void setup() {  
   pinMode(8, OUTPUT);  
-  pinMode(12, OUTPUT);
   pinMode(trigPin, OUTPUT);  
   pinMode(echoPin, INPUT);  
   pinMode(btnPin, INPUT);
   digitalWrite(8, LOW);
-  digitalWrite(12, LOW);
   Serial.begin(9600);
 }  
 
@@ -29,7 +27,6 @@ void loop() {
     bExploded = true;
     Serial.print("Good luck in the after-life, BITCH");
     digitalWrite(8, HIGH);
-    digitalWrite(12, HIGH);
   }
 }
 
