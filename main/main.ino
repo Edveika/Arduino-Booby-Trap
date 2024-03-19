@@ -1,6 +1,7 @@
 const int trigPin = 10;  
 const int echoPin = 9; 
 const int btnPin = 2;
+const int ledPin = 8;
 const float lethalDistance = 500.0;
 
 float duration, distance;  
@@ -10,12 +11,12 @@ void playUltraSound();
 void calcDistance();
 
 void setup() {  
-  pinMode(8, OUTPUT);  
+  pinMode(ledPin, OUTPUT);  
   pinMode(trigPin, OUTPUT);  
   pinMode(echoPin, INPUT);  
   pinMode(btnPin, INPUT);
-  digitalWrite(8, LOW);
-  Serial.begin(9600);
+  
+  digitalWrite(ledPin, LOW);
 }  
 
 void loop() { 
@@ -25,8 +26,7 @@ void loop() {
   if (distance <= lethalDistance && distance > 0 && !bExploded)
   {
     bExploded = true;
-    Serial.print("Good luck in the after-life, BITCH");
-    digitalWrite(8, HIGH);
+    digitalWrite(ledPin, HIGH);
   }
 }
 
