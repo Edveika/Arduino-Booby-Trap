@@ -56,6 +56,8 @@ public:
     this->exploded = false;
     this->cm_lethal_distance = cm_lethal_distance;
   }
+  ~BoobyTrap() { delete sensor; }
+  
 };
 
 const int trigPin = 10;  
