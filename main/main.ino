@@ -40,11 +40,25 @@ public:
   }
 };
 
+class BoobyTrap
+{
+private:
+  Sensor* sensor;
+  bool exploded;
+  float lethal_distance;
+  
+public:
+  BoobyTrap() {}
+  BoobyTrap(Sensor* sensor, float lethal_distance) 
+  {
+    this->sensor = sensor;
+    this->exploded = false;
+    this->lethal_distance = lethal_distance;
+  }
+};
+
 const int trigPin = 10;  
 const int echoPin = 9; 
-const float lethalDistance = 500.0;
-
-bool bExploded = false;
 
 void setup()
 {  
