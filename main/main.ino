@@ -57,7 +57,16 @@ public:
     this->cm_lethal_distance = cm_lethal_distance;
   }
   ~BoobyTrap() { delete sensor; }
-  
+
+  void run()
+  {
+    sensor->run();
+    
+    if (sensor->get_distance() <= cm_lethal_distance && sensor->get_distance() > 0 && !exploded)
+    {
+      exploded = true;
+    }
+  }
 };
 
 Sensor* sensor;
@@ -71,9 +80,5 @@ void setup()
 
 void loop()
 { 
-  /*if (distance <= lethalDistance && distance > 0 && !bExploded)
-  {
-    bExploded = true;
-    digitalWrite(ledPin, HIGH);
-  }*/
+
 }
