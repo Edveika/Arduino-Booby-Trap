@@ -1,11 +1,15 @@
 class Sensor 
 {
 private:
+  const int trig_pin;
+  const int echo_pin;
 
 public:
   Sensor() {}
   Sensor(const int trig_pin, const int echo_pin) 
   {
+    this->trig_pin = trig_pin;
+    this->echo_pin = echo_pin;
     pinMode(trigPin, OUTPUT);  
     pinMode(echoPin, INPUT);  
   }
