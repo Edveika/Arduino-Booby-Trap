@@ -29,6 +29,11 @@ public:
     duration = pulseIn(echoPin, HIGH);  
     distance = (duration*.0343)/2;  
   }
+  void run()
+  {
+    play_sound();
+    calc_distance();
+  }
 };
 
 const int trigPin = 10;  
