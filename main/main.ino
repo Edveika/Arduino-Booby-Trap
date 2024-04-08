@@ -46,15 +46,15 @@ class BoobyTrap
 private:
   Sensor* sensor;
   bool exploded;
-  float lethal_distance;
+  float cm_lethal_distance;
   
 public:
   BoobyTrap() {}
-  BoobyTrap(Sensor* sensor, float lethal_distance) 
+  BoobyTrap(Sensor* sensor, float cm_lethal_distance) 
   {
     this->sensor = sensor;
     this->exploded = false;
-    this->lethal_distance = lethal_distance;
+    this->cm_lethal_distance = cm_lethal_distance;
   }
 };
 
