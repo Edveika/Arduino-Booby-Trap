@@ -60,6 +60,9 @@ public:
 
   void run()
   {
+    if (!sensor)
+      return;
+    
     sensor->run();
     
     if (sensor->get_distance() <= cm_lethal_distance && sensor->get_distance() > 0 && !exploded)
