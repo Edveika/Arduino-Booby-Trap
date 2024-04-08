@@ -15,7 +15,11 @@ public:
     pinMode(trigPin, OUTPUT);  
     pinMode(echoPin, INPUT);  
   }
-
+  
+  float get_distance()
+  {
+    return distance;
+  }
   void play_sound()
   {
     digitalWrite(trigPin, LOW);  
