@@ -28,6 +28,7 @@ public:
     delayMicroseconds(10);  
     digitalWrite(trig_pin, LOW); 
   }
+  // Returns the distance from sensor to object in cm
   void calc_distance() 
   {
     duration = pulseIn(echo_pin, HIGH);  
