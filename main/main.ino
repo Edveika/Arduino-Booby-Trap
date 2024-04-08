@@ -1,7 +1,18 @@
+class Sensor 
+{
+private:
+
+public:
+  Sensor() {}
+  Sensor(const int trig_pin, const int echo_pin) 
+  {
+    pinMode(trigPin, OUTPUT);  
+    pinMode(echoPin, INPUT);  
+  }
+};
+
 const int trigPin = 10;  
 const int echoPin = 9; 
-const int btnPin = 2;
-const int ledPin = 8;
 const float lethalDistance = 500.0;
 
 float duration, distance;  
@@ -12,8 +23,6 @@ void calcDistance();
 
 void setup() {  
   pinMode(ledPin, OUTPUT);  
-  pinMode(trigPin, OUTPUT);  
-  pinMode(echoPin, INPUT);  
   pinMode(btnPin, INPUT);
   
   digitalWrite(ledPin, LOW);
