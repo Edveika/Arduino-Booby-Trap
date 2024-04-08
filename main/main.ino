@@ -60,12 +60,13 @@ public:
   
 };
 
-const int trigPin = 10;  
-const int echoPin = 9; 
+Sensor* sensor;
+BoobyTrap* trap;
 
 void setup()
 {  
-  
+  sensor = new Sensor(10, 9);
+  trap = new BoobyTrap(sensor, 100.0f);
 }  
 
 void loop()
