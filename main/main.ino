@@ -3,6 +3,8 @@ class Sensor
 private:
   const int trig_pin;
   const int echo_pin;
+  float duration;
+  float distance;
 
 public:
   Sensor() {}
@@ -12,6 +14,20 @@ public:
     this->echo_pin = echo_pin;
     pinMode(trigPin, OUTPUT);  
     pinMode(echoPin, INPUT);  
+  }
+
+  void play_sound()
+  {
+    digitalWrite(trigPin, LOW);  
+    delayMicroseconds(2);  
+    digitalWrite(trigPin, HIGH);  
+    delayMicroseconds(10);  
+    digitalWrite(trigPin, LOW); 
+  }
+  void calc_distance() 
+  {
+    duration = pulseIn(echoPin, HIGH);  
+    distance = (duration*.0343)/2;  
   }
 };
 
