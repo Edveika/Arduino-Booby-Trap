@@ -83,5 +83,8 @@ void setup()
 
 void loop()
 { 
-
+  if (trap)
+  {
+    trap->run();
+  }
 }
