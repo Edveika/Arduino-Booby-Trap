@@ -40,19 +40,6 @@ public:
   }
 };
 
-class BoobyTrap
-{
-private:
-  Sensor* sensor;
-
-public:
-  BoobyTrap() {}
-  BoobyTrap(Sensor* sensor) 
-  {
-    this->sensor = sensor;
-  }
-};
-
 const int trigPin = 10;  
 const int echoPin = 9; 
 const float lethalDistance = 500.0;
