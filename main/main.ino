@@ -63,14 +63,16 @@ private:
   Sensor* sensor;
   bool exploded;
   float cm_lethal_distance;
+  LED* led;
   
 public:
   BoobyTrap() {}
-  BoobyTrap(Sensor* sensor, float cm_lethal_distance) 
+  BoobyTrap(Sensor* sensor, const int led_pin, float cm_lethal_distance) 
   {
     this->sensor = sensor;
     this->exploded = false;
     this->cm_lethal_distance = cm_lethal_distance;
+    this->led = new LED(led_pin);
   }
   ~BoobyTrap() { delete sensor; }
 
@@ -80,9 +82,9 @@ public:
       return;
     
     sensor->run();
-    
     if (sensor->get_distance() <= cm_lethal_distance && sensor->get_distance() > 0 && !exploded)
     {
+      led->turn_on();
       exploded = true;
     }
   }
@@ -90,11 +92,13 @@ public:
 
 Sensor* sensor;
 BoobyTrap* trap;
+LED* led;
 
 void setup()
 {  
-  sensor = new Sensor(10, 9);
-  trap = new BoobyTrap(sensor, 100.0f);
+  sensor = new Sensor(3, 2);
+  trap = new BoobyTrap(sensor, 4, 10.0f);
+  led = new LED(4);
 }  
 
 void loop()
