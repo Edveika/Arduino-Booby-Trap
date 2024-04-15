@@ -75,7 +75,7 @@ public:
     this->cm_lethal_distance = cm_lethal_distance;
     this->led = new LED(led_pin);
     this->cm_cur_distance = get_cur_distance();
-    Serial.print(cm_cur_distance);
+    pinMode(6, OUTPUT);
   }
   ~BoobyTrap() { delete sensor; }
 
@@ -95,11 +95,15 @@ public:
   {
     if (!sensor)
       return;
+
+    if (exploded)
+      return;
     
     sensor->run();
-    if (sensor->get_distance() <= cm_lethal_distance && sensor->get_distance() > 0 && !exploded)
+    if (abs(cm_cur_distance - sensor->get_distance()) >= cm_lethal_distance && sensor->get_distance() > 0)
     {
       led->turn_on();
+      digitalWrite(6, LOW);
       exploded = true;
     }
   }
@@ -107,20 +111,15 @@ public:
 
 Sensor* sensor;
 BoobyTrap* trap;
-LED* led;
 
 void setup()
 {  
-  Serial.begin(9600);
   sensor = new Sensor(3, 2);
   trap = new BoobyTrap(sensor, 4, 10.0f);
-  led = new LED(4);
 }  
 
 void loop()
 { 
   if (trap)
-  {
     trap->run();
-  }
 }
