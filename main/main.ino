@@ -1,3 +1,19 @@
+class LED {
+private:
+  int led_pin;
+
+public:
+  LED(const int pin) 
+  {
+    led_pin = pin;
+    pinMode(pin, OUTPUT);
+    digitalWrite(pin, LOW);
+  }
+
+  void turn_on() { digitalWrite(led_pin, HIGH); }
+  void turn_off() { digitalWrite(led_pin, LOW); }
+};
+
 class Sensor 
 {
 private:
