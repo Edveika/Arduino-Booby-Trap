@@ -62,6 +62,7 @@ class BoobyTrap
 private:
   Sensor* sensor;
   bool exploded;
+  float cm_cur_distance;
   float cm_lethal_distance;
   LED* led;
   
@@ -73,9 +74,23 @@ public:
     this->exploded = false;
     this->cm_lethal_distance = cm_lethal_distance;
     this->led = new LED(led_pin);
+    this->cm_cur_distance = get_cur_distance();
+    Serial.print(cm_cur_distance);
   }
   ~BoobyTrap() { delete sensor; }
 
+  float get_cur_distance()
+  {
+    float cur_distance = 0.0f;
+
+    for (int i = 0; i < 10; ++i)
+    {
+      sensor->run();
+      cur_distance += sensor->get_distance();
+    }
+
+    return cur_distance / 10.0f;
+  }
   void run()
   {
     if (!sensor)
@@ -96,6 +111,7 @@ LED* led;
 
 void setup()
 {  
+  Serial.begin(9600);
   sensor = new Sensor(3, 2);
   trap = new BoobyTrap(sensor, 4, 10.0f);
   led = new LED(4);
