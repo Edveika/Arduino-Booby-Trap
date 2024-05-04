@@ -10,7 +10,7 @@ This project serves a learning purpose. I don't want to or encourage to harm any
 
 This project implements a simple booby trap using Arduino. The trap activates when a sensor is triggered by an object passing within a certain distance.
 
-You can find a demonstration of this project on [YouTube](https://www.youtube.com/shorts/JCjqhoGpUXk)
+**You can find a demonstration of this project on [YouTube](https://www.youtube.com/shorts/JCjqhoGpUXk)**
 
 # 🛠️ How it works
 
